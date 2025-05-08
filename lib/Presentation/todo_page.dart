@@ -109,6 +109,13 @@ class TodoPage extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(height: 16.0),
+              Expanded(
+                child: BlocBuilder<TodoBloc, TodoState>(
+                  builder: (context, State) {
+                    if (State is TodoLoading) {
+                      return Center(child: CircularProgressIndicator());
+
 
 
 
