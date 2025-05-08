@@ -115,7 +115,8 @@ class TodoPage extends StatelessWidget {
                   builder: (context, State) {
                     if (State is TodoLoading) {
                       return Center(child: CircularProgressIndicator());
-                        if (State.todos.isEmpty) {
+                    } else if (State is TodoLoaded) {
+                      if (State.todos.isEmpty) {
                         return Center(child: Text('Todo list is empty'));
                       }
                       return ListView.builder(
@@ -174,7 +175,8 @@ class TodoPage extends StatelessWidget {
                           );
                         },
                       );
-                        return Center(child: Text('No Todos available'));
+                    } else {
+                      return Center(child: Text('No Todos available'));
                     }
                   },
                 ),
@@ -186,13 +188,3 @@ class TodoPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
