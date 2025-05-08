@@ -24,4 +24,23 @@ class TodoPage extends StatelessWidget {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text('Selected Date'),
+                        BlocBuilder<TodoBloc, TodoState>(
+                          builder: (context, state) {
+                            if (state is TodoLoaded) {
+                              if (state.selectedDate != null) {
+                                return Text(
+                                  '${state.selectedDate!.day}/${state.selectedDate!.month}/${state.selectedDate!.year}',
+                                );
+                              }
+                            }
+                            return const Text('No Date Selected');
+                          },
+
 
